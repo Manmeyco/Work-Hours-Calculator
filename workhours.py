@@ -201,7 +201,7 @@ fri_end_time = datetime.time(fri_end_hour, fri_end_min)
 # APPARENTLY, you can't subtract datetime.time, you can only subtract datetime
 # so you need to combine the time with a date
 # so I am using today's date because it makes no difference to me
-# because of that, don't run this program at 11:59 PM, or it may give you an unexpected answer
+# because of that, don't run this program at 11:59 PM, or it may give you an unexpected result
 # you might want to change this
 # oh, and the combine module is inside of datetime.datetime, because WHY NOT
 
