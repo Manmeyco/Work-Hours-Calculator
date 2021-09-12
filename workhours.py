@@ -3,7 +3,8 @@ from datetime import time # sanity check to make sure it gets imported
 from datetime import date # ditto
 import sys
 import time
-
+import os # this is only used to re-open the program at the end if desired
+import msvcrt # to enable inputs without requiring Enter after
 date = datetime.date # because otherwise it breaks by the time combining
 
 
@@ -18,161 +19,220 @@ print() # blank line
 
 # This section is inputting the start and end times
 # Monday
-mon_start_hour = int(input("Monday Start Hour:")) # prompt to input starting hour for Monday
-mon_start_min = int(input("Monday Start Minute:")) # ditto starting minute
-mon_end_hour = int(input("Monday End Hour:")) # ditto ending hour
+print() # blank line
+print("Did you work on Monday?")
+print("y for Yes, n for No.")
+print() # blank line
+worked_monday = msvcrt.getwch()
 
-# Simpleton 12 hr to 24 hr format converter
-# Well, actually a 9 hr to 21 hr converter
-# yes, I could've added all of the hours, but I am lazy, and I only wanted to type it 9 times
-# and anyways, why are you working past 9?
-# If you choose a bad hour, the program will exit
-# yes, that's right - my program doesn't have bad days. It has bad hours.
-if(mon_end_hour == 1):
-    mon_end_hour = 13
-elif(mon_end_hour == 2):
-    mon_end_hour = 14
-elif(mon_end_hour == 3):
-    mon_end_hour = 15
-elif(mon_end_hour == 4):
-    mon_end_hour = 16
-elif(mon_end_hour == 5):
-    mon_end_hour = 17
-elif(mon_end_hour == 6):
-    mon_end_hour = 18
-elif(mon_end_hour == 7):
-    mon_end_hour = 19
-elif(mon_end_hour == 8):
-    mon_end_hour = 20
-elif(mon_end_hour == 9):
-    mon_end_hour = 21
-else:
-    print("Error! Invalid Monday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
-    input("Press ENTER to exit.")
-    sys.exit()
+if(worked_monday == 'y'):
+    mon_start_hour = int(input("Monday Start Hour:")) # prompt to input starting hour for Monday
+    mon_start_min = int(input("Monday Start Minute:")) # ditto starting minute
+    mon_end_hour = int(input("Monday End Hour:")) # ditto ending hour
+
+    # Simpleton 12 hr to 24 hr format converter
+    # Well, actually a 9 hr to 21 hr converter
+    # yes, I could've added all of the hours, but I am lazy, and I only wanted to type it 9 times
+    # and anyways, why are you working past 9?
+    # If you choose a bad hour, the program will exit
+    # yes, that's right - my program doesn't have bad days. It has bad hours.
+    if(mon_end_hour == 1):
+        mon_end_hour = 13
+    elif(mon_end_hour == 2):
+        mon_end_hour = 14
+    elif(mon_end_hour == 3):
+        mon_end_hour = 15
+    elif(mon_end_hour == 4):
+        mon_end_hour = 16
+    elif(mon_end_hour == 5):
+        mon_end_hour = 17
+    elif(mon_end_hour == 6):
+        mon_end_hour = 18
+    elif(mon_end_hour == 7):
+        mon_end_hour = 19
+    elif(mon_end_hour == 8):
+        mon_end_hour = 20
+    elif(mon_end_hour == 9):
+        mon_end_hour = 21
+    else:
+        print("Error! Invalid Monday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
+        input("Press ENTER to exit.")
+        sys.exit()
     
-mon_end_min = int(input("Monday End Minute:")) # ditto ending minute (OK I think you get it)
+    mon_end_min = int(input("Monday End Minute:")) # ditto ending minute (OK I think you get it)
+else:   # Make all times equal zero.
+    mon_start_hour = 0
+    mon_start_min = 0
+    mon_end_hour = 0
+    mon_end_min = 0
 
 # Tuesday
-tue_start_hour = int(input("Tuesday Start Hour:"))
-tue_start_min = int(input("Tuesday Start Minute:"))
-tue_end_hour = int(input("Tuesday End Hour:"))
+print() # blank line
+print("Did you work on Tuesday?")
+print("y for Yes, n for No.")
+print() # blank line
+worked_tuesday = msvcrt.getwch()
 
-if(tue_end_hour == 1):
-    tue_end_hour = 13
-elif(tue_end_hour == 2):
-    tue_end_hour = 14
-elif(tue_end_hour == 3):
-    tue_end_hour = 15
-elif(tue_end_hour == 4):
-    tue_end_hour = 16
-elif(tue_end_hour == 5):
-    tue_end_hour = 17
-elif(tue_end_hour == 6):
-    tue_end_hour = 18
-elif(tue_end_hour == 7):
-    tue_end_hour = 19
-elif(tue_end_hour == 8):
-    tue_end_hour = 20
-elif(tue_end_hour == 9):
-    tue_end_hour = 21
+if(worked_tuesday == 'y'):
+    tue_start_hour = int(input("Tuesday Start Hour:"))
+    tue_start_min = int(input("Tuesday Start Minute:"))
+    tue_end_hour = int(input("Tuesday End Hour:"))
+
+    if(tue_end_hour == 1):
+        tue_end_hour = 13
+    elif(tue_end_hour == 2):
+        tue_end_hour = 14
+    elif(tue_end_hour == 3):
+        tue_end_hour = 15
+    elif(tue_end_hour == 4):
+        tue_end_hour = 16
+    elif(tue_end_hour == 5):
+        tue_end_hour = 17
+    elif(tue_end_hour == 6):
+        tue_end_hour = 18
+    elif(tue_end_hour == 7):
+        tue_end_hour = 19
+    elif(tue_end_hour == 8):
+        tue_end_hour = 20
+    elif(tue_end_hour == 9):
+        tue_end_hour = 21
+    else:
+        print("Error! Invalid Tuesday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
+        input("Press ENTER to exit.")
+        sys.exit()
+
+    tue_end_min = int(input("Tuesday End Minute:"))
 else:
-    print("Error! Invalid Tuesday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
-    input("Press ENTER to exit.")
-    sys.exit()
-
-tue_end_min = int(input("Tuesday End Minute:"))
-
+    tue_start_hour = 0
+    tue_start_min = 0
+    tue_end_hour = 0
+    tue_end_min = 0
+    
 # Wednesday
-wed_start_hour = int(input("Wednesday Start Hour:"))
-wed_start_min = int(input("Wednesday Start Minute:"))
-wed_end_hour = int(input("Wednesday End Hour:"))
+print() # blank line
+print("Did you work on Wednesday?")
+print("y for Yes, n for No.")
+print() # blank line
+worked_wednesday = msvcrt.getwch()
 
-if(wed_end_hour == 1):
-    wed_end_hour = 13
-elif(wed_end_hour == 2):
-    wed_end_hour = 14
-elif(wed_end_hour == 3):
-    wed_end_hour = 15
-elif(wed_end_hour == 4):
-    wed_end_hour = 16
-elif(wed_end_hour == 5):
-    wed_end_hour = 17
-elif(wed_end_hour == 6):
-    wed_end_hour = 18
-elif(wed_end_hour == 7):
-    wed_end_hour = 19
-elif(wed_end_hour == 8):
-    wed_end_hour = 20
-elif(wed_end_hour == 9):
-    wed_end_hour = 21
+if(worked_wednesday == 'y'):
+    wed_start_hour = int(input("Wednesday Start Hour:"))
+    wed_start_min = int(input("Wednesday Start Minute:"))
+    wed_end_hour = int(input("Wednesday End Hour:"))
+
+    if(wed_end_hour == 1):
+        wed_end_hour = 13
+    elif(wed_end_hour == 2):
+        wed_end_hour = 14
+    elif(wed_end_hour == 3):
+        wed_end_hour = 15
+    elif(wed_end_hour == 4):
+        wed_end_hour = 16
+    elif(wed_end_hour == 5):
+        wed_end_hour = 17
+    elif(wed_end_hour == 6):
+        wed_end_hour = 18
+    elif(wed_end_hour == 7):
+        wed_end_hour = 19
+    elif(wed_end_hour == 8):
+        wed_end_hour = 20
+    elif(wed_end_hour == 9):
+        wed_end_hour = 21
+    else:
+        print("Error! Invalid Wednesday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
+        input("Press ENTER to exit.")
+        sys.exit()
+
+    wed_end_min = int(input("Wednesday End Minute:"))
 else:
-    print("Error! Invalid Wednesday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
-    input("Press ENTER to exit.")
-    sys.exit()
-
-wed_end_min = int(input("Wednesday End Minute:"))
+    wed_start_hour = 0
+    wed_start_min = 0
+    wed_end_hour = 0
+    wed_end_min = 0
 
 # Thursday
-thu_start_hour = int(input("Thursday Start Hour:"))
-thu_start_min = int(input("Thursday Start Minute:"))
-thu_end_hour = int(input("Thursday End Hour:"))
+print() # blank line
+print("Did you work on Thursday?")
+print("y for Yes, n for No.")
+print() # blank line
+worked_thursday = msvcrt.getwch()
 
-if(thu_end_hour == 1):
-    thu_end_hour = 13
-elif(thu_end_hour == 2):
-    thu_end_hour = 14
-elif(thu_end_hour == 3):
-    thu_end_hour = 15
-elif(thu_end_hour == 4):
-    thu_end_hour = 16
-elif(thu_end_hour == 5):
-    thu_end_hour = 17
-elif(thu_end_hour == 6):
-    thu_end_hour = 18
-elif(thu_end_hour == 7):
-    thu_end_hour = 19
-elif(thu_end_hour == 8):
-    thu_end_hour = 20
-elif(thu_end_hour == 9):
-    thu_end_hour = 21
+if(worked_thursday == 'y'):
+    thu_start_hour = int(input("Thursday Start Hour:"))
+    thu_start_min = int(input("Thursday Start Minute:"))
+    thu_end_hour = int(input("Thursday End Hour:"))
+
+    if(thu_end_hour == 1):
+        thu_end_hour = 13
+    elif(thu_end_hour == 2):
+        thu_end_hour = 14
+    elif(thu_end_hour == 3):
+        thu_end_hour = 15
+    elif(thu_end_hour == 4):
+        thu_end_hour = 16
+    elif(thu_end_hour == 5):
+        thu_end_hour = 17
+    elif(thu_end_hour == 6):
+        thu_end_hour = 18
+    elif(thu_end_hour == 7):
+        thu_end_hour = 19
+    elif(thu_end_hour == 8):
+        thu_end_hour = 20
+    elif(thu_end_hour == 9):
+        thu_end_hour = 21
+    else:
+        print("Error! Invalid Thursday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
+        input("Press ENTER to exit.")
+        sys.exit()
+
+    thu_end_min = int(input("Thursday End Minute:"))
 else:
-    print("Error! Invalid Thursday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
-    input("Press ENTER to exit.")
-    sys.exit()
-
-thu_end_min = int(input("Thursday End Minute:"))
+    thu_start_hour = 0
+    thu_start_min = 0
+    thu_end_hour = 0
+    thu_end_min = 0
 
 # Friday
-fri_start_hour = int(input("Friday Start Hour:"))
-fri_start_min = int(input("Friday Start Minute:"))
-fri_end_hour = int(input("Friday End Hour:"))
+print() # blank line
+print("Did you work on Friday?")
+print("y for Yes, n for No.")
+print() # blank line
+worked_friday = msvcrt.getwch()
 
-if(fri_end_hour == 1):
-    fri_end_hour = 13
-elif(fri_end_hour == 2):
-    fri_end_hour = 14
-elif(fri_end_hour == 3):
-    fri_end_hour = 15
-elif(fri_end_hour == 4):
-    fri_end_hour = 16
-elif(fri_end_hour == 5):
-    fri_end_hour = 17
-elif(fri_end_hour == 6):
-    fri_end_hour = 18
-elif(fri_end_hour == 7):
-    fri_end_hour = 19
-elif(fri_end_hour == 8):
-    fri_end_hour = 20
-elif(fri_end_hour == 9):
-    fri_end_hour = 21
+if(worked_friday == 'y'):
+    fri_start_hour = int(input("Friday Start Hour:"))
+    fri_start_min = int(input("Friday Start Minute:"))
+    fri_end_hour = int(input("Friday End Hour:"))
+
+    if(fri_end_hour == 1):
+        fri_end_hour = 13
+    elif(fri_end_hour == 2):
+        fri_end_hour = 14
+    elif(fri_end_hour == 3):
+        fri_end_hour = 15
+    elif(fri_end_hour == 4):
+        fri_end_hour = 16
+    elif(fri_end_hour == 5):
+        fri_end_hour = 17
+    elif(fri_end_hour == 6):
+        fri_end_hour = 18
+    elif(fri_end_hour == 7):
+        fri_end_hour = 19
+    elif(fri_end_hour == 8):
+        fri_end_hour = 20
+    elif(fri_end_hour == 9):
+        fri_end_hour = 21
+    else:
+        print("Error! Invalid Friday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
+        input("Press ENTER to exit.")
+        sys.exit()
+
+    fri_end_min = int(input("Friday End Minute:"))
 else:
-    print("Error! Invalid Friday end hour. Please close and reopen this program, and input an end hour from 1 PM to 9 PM.")
-    input("Press ENTER to exit.")
-    sys.exit()
-
-fri_end_min = int(input("Friday End Minute:"))
-
+    fri_start_hour = 0
+    fri_start_min = 0
+    fri_end_hour = 0
+    fri_end_min = 0
 
 # Combining the hours and minutes (there's probably an easier way to do this, but whatever)
 
@@ -201,7 +261,7 @@ fri_end_time = datetime.time(fri_end_hour, fri_end_min)
 # APPARENTLY, you can't subtract datetime.time, you can only subtract datetime
 # so you need to combine the time with a date
 # so I am using today's date because it makes no difference to me
-# because of that, don't run this program at 11:59 PM, or it may give you an unexpected result
+# because of that, don't run this program at 11:59 PM, or it may give you an unexpected answer
 # you might want to change this
 # oh, and the combine module is inside of datetime.datetime, because WHY NOT
 
@@ -240,6 +300,10 @@ print(thu_total_time)
 print("Total time worked for Friday:")
 print(fri_total_time)
 
+# Print total time (useful to know hours in a week worked)
+hours_in_week = mon_total_time + tue_total_time + wed_total_time + thu_total_time + fri_total_time
+print("Total time worked for the week:")
+print(hours_in_week)
 
 # convert timedelta object to a normal integer
 
@@ -315,7 +379,7 @@ print("Calculating your wages...")
 time.sleep(3)
 print() # blank line
 
-hourly_wage = 13 # <--- Edit this number for your hourly wage
+hourly_wage = 14 # <--- Edit this number for your hourly wage
 
 your_wage = "Your hourly wage is ${} an hour. You can change this by opening this file in a text editor, such as Notepad or IDLE, and editing the hourly_wage variable.".format(hourly_wage)
 print(your_wage)
@@ -347,7 +411,18 @@ print("Thank you for using my calculator!\nLicensed by Manmeyco under the GNU GP
 
 # Keep python open so you can see the result without Python closing on you
 # edit: stuck it into a comment because IT DIDN'T WORK
-# edit 2: apparently, if there's an error, python closes anyways
+# edit 2: not anymore - apparently, if there's an error, python closes anyways
+
+# Attempt to be able to re-open the program to calculate an additional week
 
 print() # blank line
-input('Press ENTER when done!')
+print("Do you want to calculate another week?")
+print("y for Yes, n for No.")
+print() # blank line
+another_week = msvcrt.getwch()
+
+if(another_week == 'y'):
+    os.system('python workhours.py')
+else:   # For some reason it prompts to press enter twice. Solve later. -- Turns out it was somehow calling it twice. Else solved it ¯\_(ツ)_/¯
+    print() # blank line
+    input('Press ENTER when done!')
